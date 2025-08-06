@@ -1,0 +1,25 @@
+@use './variables' as vars;
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:wght@400;500&display=swap');
+.home-container {
+  font-family: vars.$font-family-heading;
+  font-weight: vars.$font-weight-normal;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 50px;
+  color: vars.$text-color; 
+
+  .v-theme--light & {
+    color: vars.$text-color-light;
+  }
+
+  .v-theme--dark & {
+    color: vars.$text-color-dark;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+}

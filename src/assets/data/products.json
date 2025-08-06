@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "Classic Cotton T-Shirt",
+    "category": "Clothing",
+    "price": 499,
+    "rating": 4.5,
+    "description": "A soft and comfortable cotton T-shirt perfect for daily wear.",
+    "image": "tshirt-classic.jpg",
+    "stock": 25,
+    "quantity": 1
+  },
+  {
+    "id": 2,
+    "name": "Running Sneakers",
+    "category": "Footwear",
+    "price": 2499,
+    "rating": 4.7,
+    "description": "Lightweight running sneakers designed for maximum comfort.",
+    "image": "sneakers-running.jpg",
+    "stock": 15,
+    "quantity": 1
+  },
+  {
+    "id": 3,
+    "name": "Leather Wallet",
+    "category": "Accessories",
+    "price": 899,
+    "rating": 4.4,
+    "description": "Premium quality leather wallet with multiple compartments.",
+    "image": "wallet-leather.jpg",
+    "stock": 30,
+    "quantity": 1
+  },
+  {
+    "id": 4,
+    "name": "Noise Cancelling Headphones",
+    "category": "Electronics",
+    "price": 5999,
+    "rating": 4.8,
+    "description": "Over-ear headphones with active noise cancellation and long battery life.",
+    "image": "headphones-noise.jpg",
+    "stock": 12,
+    "quantity": 1
+  },
+  {
+    "id": 5,
+    "name": "Stainless Steel Water Bottle",
+    "category": "Home & Kitchen",
+    "price": 699,
+    "rating": 4.3,
+    "description": "Eco-friendly and reusable water bottle with a sleek design.",
+    "image": "waterbottle-steel.jpg",
+    "stock": 50,
+    "quantity": 1
+  },
+  {
+    "id": 6,
+    "name": "Smartwatch Series 5",
+    "category": "Electronics",
+    "price": 10999,
+    "rating": 4.6,
+    "description": "Smartwatch with fitness tracking, notifications, and customizable watch faces.",
+    "image": "smartwatch-series5.jpg",
+    "stock": 8,
+    "quantity": 1
+  },
+  {
+    "id": 7,
+    "name": "Denim Jacket",
+    "category": "Clothing",
+    "price": 1999,
+    "rating": 4.5,
+    "description": "Classic denim jacket for a stylish casual look.",
+    "image": "jacket-denim.jpg",
+    "stock": 20,
+    "quantity": 1
+  },
+  {
+    "id": 8,
+    "name": "Bluetooth Portable Speaker",
+    "category": "Electronics",
+    "price": 2499,
+    "rating": 4.4,
+    "description": "Portable Bluetooth speaker with powerful sound and waterproof design.",
+    "image": "speaker-bluetooth.jpg",
+    "stock": 18,
+    "quantity": 1
+  },
+  {
+    "id": 9,
+    "name": "Sports Backpack",
+    "category": "Accessories",
+    "price": 1499,
+    "rating": 4.2,
+    "description": "Durable sports backpack with multiple compartments.",
+    "image": "backpack-sports.jpg",
+    "stock": 22,
+    "quantity": 1
+  },
+  {
+    "id": 10,
+    "name": "Ceramic Coffee Mug Set",
+    "category": "Home & Kitchen",
+    "price": 799,
+    "rating": 4.6,
+    "description": "Set of 4 ceramic coffee mugs with a modern design.",
+    "image": "mugset-ceramic.jpg",
+    "stock": 35,
+    "quantity": 1
+  }
+]

@@ -1,0 +1,12 @@
+@use './sass/variables' as *;
+@use './sass/main-container';
+@use './sass/home';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $background-color;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+}
