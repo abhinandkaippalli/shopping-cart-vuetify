@@ -1,8 +1,15 @@
 <template>
   <v-container>
-    <v-chip class="mb-2" size="large" color="primary" text-color="white" label><h2>Cart: {{ cartItemsCount }}</h2></v-chip>
+    <div class="d-flex justify-space-between align-center mb-4">
+      <v-chip class="mb-2" size="large" color="primary" text-color="white" label>
+        <h2>Cart: {{ cartItemsCount }}</h2>
+      </v-chip>
+      <div style="width: 300px">
+        <v-select v-model="sortBy" :items="sortOptions" label="Sort by" variant="outlined" dense hide-details clearable/>
+      </div>
+    </div>
     <v-row>
-      <v-col v-for="product in state.productList" :key="product.id" cols="12" sm="6" md="4" lg="3">
+      <v-col v-for="product in sortedProducts" :key="product.id" cols="12" sm="6" md="4" lg="3">
         <v-card class="product-card">
           <v-img :src="`/images/${product.image}`" height="200" cover></v-img>
           <v-card-title>{{ product.name }}</v-card-title>
@@ -20,32 +27,45 @@
   </v-container>
 </template>
 <script setup>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 const store = useStore()
 const state = reactive({
   productList: []
 })
+const sortBy = ref(null)
+const sortOptions = [
+  { title: 'Category (A-Z)', value: 'categoryAsc' },
+  { title: 'Category (Z-A)', value: 'categoryDesc' },
+  { title: 'Price: Low to High', value: 'priceAsc' },
+  { title: 'Price: High to Low', value: 'priceDesc' },
+  { title: 'Rating: Low to High', value: 'ratingAsc' },
+  { title: 'Rating: High to Low', value: 'ratinDesc' },
+]
 const addToCart = (product) => {
   store.commit('addToCart', product)
 }
 onMounted(() => {
   state.productList = store.getters['getProducts']
 })
-const cartItemsCount = computed(() => {
-  let items = store.getters['getCartItems']
-  return items.length
-})
-</script>
-<style lang="scss" scoped>
-.product-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-
-  .cart-button {
-    margin-top: auto;
-    padding-bottom: 16px; 
+const sortedProducts = computed(() => {
+  let products = [...state.productList]
+  switch (sortBy.value) {
+    case 'priceAsc':
+      return products.sort((a, b) => a.price - b.price)
+    case 'priceDesc':
+      return products.sort((a, b) => b.price - a.price)
+    case 'ratingAsc':
+      return products.sort((a, b) => a.rating - b.rating)
+    case 'ratinDesc':
+      return products.sort((a, b) => b.rating - a.rating)
+    case 'categoryAsc':
+      return products.sort((a, b) => a.category.localeCompare(b.category))
+    case 'categoryDesc':
+      return products.sort((a, b) => b.category.localeCompare(a.category))
+    default:
+      return products
   }
-}
-</style>
+})
+const cartItemsCount = computed(() => store.getters['getCartItems'].length)
+</script>

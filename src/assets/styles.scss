@@ -10,3 +10,16 @@ body {
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
 }
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .cart-button {
+    margin-top: auto;
+    padding-bottom: 16px;
+  }
+}
+.input-style {
+  width: 300px;
+}

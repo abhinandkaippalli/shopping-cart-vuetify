@@ -1,21 +1,26 @@
 <template>
   <v-container>
-    <h2>Your Cart List</h2>
-    <v-data-table v-if="cartItems.length > 0" :headers="headers" :items="cartItems" class="elevation-1" hide-default-footer>
+    <div class="d-flex justify-space-between align-center mb-4">
+      <h2 class="mb-0">Your Cart List</h2>
+      <div style="width: 300px">
+        <v-text-field v-model="search" label="Search products" variant="outlined" dense clearable hide-details />
+      </div>
+    </div>
+    <v-data-table v-if="cartItems.length > 0" :headers="headers" :items="cartItems" :search="search" class="elevation-1" hide-default-footer>
       <template #item.image="{ item }">
         <v-img :src="`/images/${item.image}`" height="50" width="50" cover />
       </template>
       <template #item.price="{ item }">₹{{ item.price }}</template>
       <template #item.quantity="{ item }">
         <div class="d-flex align-center">
-          <v-btn icon="mdi-minus" size="x-small" variant="text" @click="decreaseQuantity(item.id)" :disabled="item.quantity <= 1" />
+          <v-btn icon="mdi-minus" size="x-small" variant="text" @click="decreaseQuantity(item.id)" :disabled="item.quantity <= 1"/>
           <span class="mx-2">{{ item.quantity }}</span>
-          <v-btn icon="mdi-plus" size="x-small" variant="text" @click="increaseQuantity(item.id)" />
+          <v-btn  icon="mdi-plus"  size="x-small"  variant="text"  @click="increaseQuantity(item.id)"/>
         </div>
       </template>
       <template #item.rowTotal="{ item }">₹{{ item.price * item.quantity }}</template>
       <template #item.actions="{ item }">
-        <v-btn icon="mdi-delete" color="error" @click="removeItem(item.id)" />
+        <v-btn  icon="mdi-delete"  color="error"  @click="removeItem(item.id)"/>
       </template>
     </v-data-table>
     <v-alert v-else type="info" class="mt-4">Your cart is empty.</v-alert>
@@ -27,13 +32,20 @@
   </v-container>
 </template>
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 const store = useStore()
+const search = ref('')
 const cartItems = computed(() => store.getters['getCartItems'])
 const cartTotal = computed(() => store.getters['cartTotal'])
 const removeItem = (id) => {
   store.commit('removeFromCart', id)
+}
+const increaseQuantity = (id) => {
+  store.commit('updateQuantity', { id, amount: 1 })
+}
+const decreaseQuantity = (id) => {
+  store.commit('updateQuantity', { id, amount: -1 })
 }
 const headers = [
   { title: 'Image', key: 'image', sortable: false },
@@ -43,10 +55,4 @@ const headers = [
   { title: 'Total', key: 'rowTotal' },
   { title: 'Actions', key: 'actions', sortable: false }
 ]
-const increaseQuantity = (id) => {
-  store.commit('updateQuantity', { id, amount: 1 })
-}
-const decreaseQuantity = (id) => {
-  store.commit('updateQuantity', { id, amount: -1 })
-}
 </script>
