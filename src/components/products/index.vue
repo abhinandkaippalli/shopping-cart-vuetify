@@ -1,13 +1,17 @@
 <template>
   <v-container>
-    <div class="d-flex justify-space-between align-center mb-4">
-      <v-chip class="mb-2" size="large" color="primary" text-color="white" label>
-        <h2>Cart: {{ cartItemsCount }}</h2>
-      </v-chip>
-      <div style="width: 300px">
-        <v-select v-model="sortBy" :items="sortOptions" label="Sort by" variant="outlined" dense hide-details clearable/>
-      </div>
-    </div>
+    <v-row class="mb-4">
+      <v-col cols="12" sm="6" class="d-flex align-center">
+        <v-chip class="mb-2" size="large" color="primary" text-color="white" label>
+          <h2 class="m-0">Cart: {{ cartItemsCount }}</h2>
+        </v-chip>
+      </v-col>
+      <v-col cols="12" sm="6" class="d-flex justify-sm-end">
+        <div style="width: 300px">
+          <v-select v-model="sortBy" :items="sortOptions" label="Sort by" variant="outlined" dense hide-details clearable />
+        </div>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col v-for="product in sortedProducts" :key="product.id" cols="12" sm="6" md="4" lg="3">
         <v-card class="product-card">

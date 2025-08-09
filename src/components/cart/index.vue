@@ -1,11 +1,15 @@
 <template>
   <v-container>
-    <div class="d-flex justify-space-between align-center mb-4">
-      <h2 class="mb-0">Your Cart List</h2>
-      <div style="width: 300px">
-        <v-text-field v-model="search" label="Search products" variant="outlined" dense clearable hide-details />
-      </div>
-    </div>
+    <v-row class="mb-4">
+      <v-col cols="12" sm="6" class="d-flex align-center">
+        <h2 class="mb-0">Your Cart List</h2>
+      </v-col>
+      <v-col cols="12" sm="6" class="d-flex justify-sm-end">
+        <div style="width: 300px">
+          <v-text-field v-model="search" label="Search products" variant="outlined" dense clearable hide-details/>
+        </div>
+      </v-col>
+    </v-row>
     <v-data-table v-if="cartItems.length > 0" :headers="headers" :items="cartItems" :search="search" class="elevation-1" hide-default-footer>
       <template #item.image="{ item }">
         <v-img :src="`/images/${item.image}`" height="50" width="50" cover />
