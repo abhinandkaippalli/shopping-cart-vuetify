@@ -1,7 +1,8 @@
+import { defineAsyncComponent } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import DashBoard from '@/views/home'
+const DashBoard = defineAsyncComponent(() => import('@/views/home'))
 import Products from '@/components/products'
-import Cart from '@/components/cart'
+const Cart = defineAsyncComponent(() => import('@/components/cart'))
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
